@@ -519,7 +519,7 @@
                     <strong>💸 입금 예시</strong><br>
                     정상가가 <strong>₩400,000</strong>이고 📅 달력에<br>
                      <strong>₩240,000</strong>으로 표시된 경우,<br>
-                    👉 <strong>₩240,000</strong>을 입금하시면 됩니다 ✅</p>
+                    👉 <strong>₩240,000</strong>을 입금하시면 됩니다 ✅
                 </div>
             </div>
         </div>
@@ -539,16 +539,45 @@
     </div>
 
     <script>
-        // 간단한 데이터 구조
+        // 실제 엑셀 데이터 기반으로 수정된 데이터 구조
         const ROOM_DATA = {
-            '별1': { name: '별1', basePrice: 400000, features: '독채, 개별풀빌라' },
-            '별2': { name: '별2', basePrice: 500000, features: '독채, 개별풀빌라, 히노끼탕, 루프탑' },
-            '별3': { name: '별3', basePrice: 500000, features: '독채, 개별풀빌라, 히노끼탕, 루프탑' },
-            '별4': { name: '별4', basePrice: 500000, features: '독채, 개별풀빌라, 히노끼탕, 루프탑' },
-            '별5': { name: '별5', basePrice: 400000, features: '독채, 개별풀빌라' }
+            '별1': { name: '별1', features: '독채, 개별풀빌라' },
+            '별2': { name: '별2', features: '독채, 개별풀빌라, 히노끼탕, 루프탑' },
+            '별3': { name: '별3', features: '독채, 개별풀빌라, 히노끼탕, 루프탑' },
+            '별4': { name: '별4', features: '독채, 개별풀빌라, 히노끼탕, 루프탑' },
+            '별5': { name: '별5', features: '독채, 개별풀빌라' }
         };
 
-        // 할인율 계산 함수
+        // 실제 정상가 계산 (월~목, 금요일, 주말 구분)
+        function getBasePrice(roomKey, date) {
+            const month = date.getMonth() + 1;
+            const dayOfWeek = date.getDay();
+            const isFriday = dayOfWeek === 5;
+            const isWeekend = dayOfWeek === 0 || dayOfWeek === 6;
+            
+            // 히노끼탕 있는 객실 (별2, 별3, 별4)
+            if (roomKey === '별2' || roomKey === '별3' || roomKey === '별4') {
+                if (isWeekend) {
+                    return 650000; // 토요일, 일요일
+                } else if (isFriday) {
+                    return 550000; // 금요일
+                } else {
+                    return 500000; // 월~목요일
+                }
+            }
+            // 기본 풀빌라 (별1, 별5)
+            else {
+                if (isWeekend) {
+                    return 550000; // 토요일, 일요일
+                } else if (isFriday) {
+                    return 450000; // 금요일
+                } else {
+                    return 400000; // 월~목요일
+                }
+            }
+        }
+
+        // 할인율 계산 함수 (금요일은 평일 할인율 적용)
         function getDiscountRate(date) {
             const month = date.getMonth() + 1;
             const dayOfWeek = date.getDay();
@@ -562,16 +591,17 @@
             return 0;
         }
 
-        // 날짜별 가격 계산
+        // 수정된 가격 계산 함수
         function calculatePrice(roomKey, date) {
             const room = ROOM_DATA[roomKey];
+            const basePrice = getBasePrice(roomKey, date);
             const discountRate = getDiscountRate(date);
-            const discountPrice = room.basePrice * (100 - discountRate) / 100;
+            const discountPrice = basePrice * (100 - discountRate) / 100;
             
             return {
                 name: room.name,
                 features: room.features,
-                originalPrice: room.basePrice,
+                originalPrice: basePrice,
                 discountRate: discountRate,
                 finalPrice: discountPrice
             };
