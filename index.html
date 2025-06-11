@@ -63,23 +63,11 @@
             font-weight: 400;
             font-size: 1em;
             border: 1px solid #fbb6ce;
-            line-height: 1.8;
+            line-height: 1.4;
         }
         
         .discount-info br {
             display: block;
-        }
-        
-        @media (max-width: 768px) {
-            .discount-info {
-                font-size: 0.9em;
-                padding: 15px;
-                line-height: 1.6;
-            }
-            
-            .discount-info br {
-                display: none;
-            }
         }
         
         .tabs {
@@ -87,6 +75,7 @@
             justify-content: center;
             gap: 10px;
             margin-bottom: 30px;
+            flex-wrap: wrap;
         }
         
         .tab-button {
@@ -426,10 +415,13 @@
 <body>
     <div class="container">
         <div class="header">
-            <h1>무주 풀빌라 별 공구 가격표</h1>
+            <h1>🏊‍♀️ 무주 풀빌라 별<br>공구 가격표</h1>
             <div class="subtitle">6월 11일부터 9월 30일까지</div>
             <div class="discount-info">
-                6월과 9월은 평일 40% 주말 20% 할인, 7월과 8월은 평일 30% 주말 10% 할인 적용
+                📅 6,9월<br>
+                평일 40% 주말 20%<br>
+                🏖️ 7,8월<br>
+                평일 30% 주말 10%
             </div>
         </div>
 
@@ -495,13 +487,13 @@
         <div class="booking-info">
             <h3 class="info-title">주요 안내사항</h3>
             <ul class="info-list">
-                <li>할인가 확인이 어려우시면 전화나 카카오톡으로 문의해주세요</li>
-                <li>기준 인원이 미달되어도 할인 적용이 가능합니다 (상담 후 입금)</li>
-                <li>예약 후 3시간 내에 입금하지 않으면 자동으로 취소됩니다</li>
-                <li>최대 5인까지 추가 요금이 없으며, 24개월 이하 영유아는 무료입니다</li>
-                <li>인원 추가 요금은 현장에서 결제하시면 됩니다</li>
-                <li>현금영수증은 현장에서 요청 가능합니다</li>
-                <li>날짜 변경은 1회 가능하며, 취소와 환불은 불가능합니다 (잔여 객실이 있을 때만 변경 가능)</li>
+                <li>확인이 어려울 경우 전화 or 카카오톡 문의</li>
+                <li>기준 인원이 미달 시 추가 할인(상담 후 입금)</li>
+                <li>예약 후 3시간 내 미입금 시 자동 취소</li>
+                <li>최대 5인까지 추가 요금 없으며, 24개월 이하 무료</li>
+                <li>인원 추가 요금은 현장 결제</li>
+                <li>현금영수증은 현장에서 요청 가능</li>
+                <li>날짜 변경은 1회 가능하며, 취소와 환불은 불가</li>
             </ul>
         </div>
     </div>
