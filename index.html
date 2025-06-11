@@ -233,22 +233,33 @@
             border-radius: 10px;
             overflow: hidden;
             margin-top: 20px;
+            min-width: 100%;
+            width: 100%;
+        }
+        
+        .calendar-container {
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
         }
         
         .calendar-header {
             background: #4a5568;
             color: white;
-            padding: 12px 8px;
+            padding: 12px 4px;
             text-align: center;
             font-weight: 500;
+            font-size: 0.9em;
+            min-width: 0;
         }
         
         .calendar-day {
             background: white;
             min-height: 160px;
-            padding: 8px;
+            padding: 6px;
             border: 1px solid #f1f5f9;
             position: relative;
+            min-width: 0;
+            overflow: hidden;
         }
         
         .calendar-day.weekend {
@@ -389,25 +400,52 @@
             }
             
             .calendar-view {
+                font-size: 0.75em;
+                min-width: 500px;
+            }
+            
+            .calendar-header {
+                padding: 8px 2px;
                 font-size: 0.8em;
             }
             
             .calendar-day {
-                min-height: 140px;
-                padding: 4px;
+                min-height: 120px;
+                padding: 3px;
             }
             
             .day-price {
-                font-size: 0.6em;
-                padding: 3px 4px;
+                font-size: 0.55em;
+                padding: 2px 3px;
+                margin-bottom: 2px;
             }
             
             .price-room-name {
-                font-size: 1em;
+                font-size: 0.9em;
             }
             
             .price-final {
-                font-size: 0.9em;
+                font-size: 0.8em;
+            }
+            
+            .day-number {
+                font-size: 0.85em;
+                margin-bottom: 3px;
+            }
+            
+            .price-comparison {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 1px;
+            }
+            
+            .price-original {
+                font-size: 0.7em;
+            }
+            
+            .price-discount-rate {
+                font-size: 0.65em;
+                align-self: flex-end;
             }
         }
     </style>
@@ -415,7 +453,7 @@
 <body>
     <div class="container">
         <div class="header">
-            <h1>무주 풀빌라 별<br>공구 가격표</h1>
+            <h1>🏊‍♀️ 무주 풀빌라 별<br>공구 가격표</h1>
             <div class="subtitle">6월 11일부터 9월 30일까지</div>
             <div class="discount-info">
                 📅 6,9월<br>
@@ -493,7 +531,7 @@
                 <li>최대 5인까지 추가 요금 X, 24개월 이하 무료</li>
                 <li>인원 추가 요금은 현장 결제</li>
                 <li>현금영수증은 현장에서 요청 가능</li>
-                <li>날짜 변경은 1회 가능, 취소와 환불은 불가</li>
+                <li>날짜 변경 1회 가능, 취소와 환불은 불가</li>
             </ul>
         </div>
     </div>
@@ -608,6 +646,7 @@
             
             let html = '<h3 style="text-align: center; margin-bottom: 20px; color: #2d3748;">';
             html += year + '년 ' + monthNames[month] + '</h3>';
+            html += '<div class="calendar-container">';
             html += '<div class="calendar-view">';
             
             // 요일 헤더
@@ -661,6 +700,7 @@
                 html += '</div>';
             }
             
+            html += '</div>';
             html += '</div>';
             container.innerHTML = html;
         }
