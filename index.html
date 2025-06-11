@@ -1,0 +1,672 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>무주 풀빌라 별 공구 가격표</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Malgun Gothic', sans-serif;
+            line-height: 1.6;
+            color: #4a5568;
+            background: linear-gradient(135deg, #f7fafc 0%, #edf2f7 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .header {
+            text-align: center;
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+            margin-bottom: 30px;
+            border: 1px solid #e2e8f0;
+        }
+        
+        .header h1 {
+            color: #2d3748;
+            font-size: 2.5em;
+            margin-bottom: 15px;
+            font-weight: 300;
+        }
+        
+        .header .subtitle {
+            color: #718096;
+            font-size: 1.1em;
+            margin-bottom: 25px;
+            font-weight: 300;
+        }
+        
+        .discount-info {
+            background: linear-gradient(135deg, #fed7d7 0%, #feb2b2 100%);
+            color: #742a2a;
+            padding: 20px;
+            border-radius: 15px;
+            text-align: center;
+            font-weight: 400;
+            font-size: 1em;
+            border: 1px solid #fbb6ce;
+        }
+        
+        .tabs {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 30px;
+        }
+        
+        .tab-button {
+            padding: 12px 24px;
+            border: none;
+            border-radius: 25px;
+            font-size: 1em;
+            font-weight: 400;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            background: linear-gradient(135d, #f7fafc 0%, #edf2f7 100%);
+            color: #4a5568;
+            border: 1px solid #e2e8f0;
+        }
+        
+        .tab-button.active {
+            background: linear-gradient(135deg, #bee3f8 0%, #90cdf4 100%);
+            color: #2b6cb0;
+            border: 1px solid #90cdf4;
+            transform: translateY(-2px);
+        }
+        
+        .tab-content {
+            display: none;
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.05);
+            border: 1px solid #e2e8f0;
+        }
+        
+        .tab-content.active {
+            display: block;
+        }
+        
+        .search-form {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin-bottom: 20px;
+        }
+        
+        .form-input {
+            padding: 10px 15px;
+            border: 2px solid #e2e8f0;
+            border-radius: 10px;
+            font-size: 1em;
+            background: #f7fafc;
+            color: #4a5568;
+            min-width: 150px;
+        }
+        
+        .form-input:focus {
+            outline: none;
+            border-color: #90cdf4;
+            background: white;
+        }
+        
+        .btn {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 20px;
+            font-size: 0.9em;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 400;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, #90cdf4 0%, #63b3ed 100%);
+            color: #1e40af;
+            border: 1px solid #63b3ed;
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+        
+        .btn-secondary {
+            background: linear-gradient(135deg, #9ae6b4 0%, #68d391 100%);
+            color: #22543d;
+            border: 1px solid #68d391;
+        }
+        
+        .result-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .room-card {
+            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+            padding: 20px;
+            border-radius: 12px;
+            border: 1px solid #bae6fd;
+            transition: transform 0.2s ease;
+        }
+        
+        .room-card:hover {
+            transform: translateY(-2px);
+        }
+        
+        .room-title {
+            font-size: 1.2em;
+            font-weight: 500;
+            color: #1e40af;
+            margin-bottom: 8px;
+        }
+        
+        .room-features {
+            color: #6b7280;
+            font-size: 0.9em;
+            margin-bottom: 12px;
+        }
+        
+        .price-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 8px;
+        }
+        
+        .original-price {
+            text-decoration: line-through;
+            color: #9ca3af;
+            font-size: 0.9em;
+        }
+        
+        .discount-badge {
+            background: linear-gradient(135deg, #fecaca 0%, #f87171 100%);
+            color: #7f1d1d;
+            padding: 3px 8px;
+            border-radius: 6px;
+            font-size: 0.8em;
+            font-weight: 500;
+        }
+        
+        .final-price {
+            font-size: 1.3em;
+            font-weight: 600;
+            color: #dc2626;
+        }
+        
+        .calendar-view {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 1px;
+            background: #e2e8f0;
+            border-radius: 10px;
+            overflow: hidden;
+            margin-top: 20px;
+        }
+        
+        .calendar-header {
+            background: #4a5568;
+            color: white;
+            padding: 12px 8px;
+            text-align: center;
+            font-weight: 500;
+        }
+        
+        .calendar-day {
+            background: white;
+            min-height: 160px;
+            padding: 8px;
+            border: 1px solid #f1f5f9;
+            position: relative;
+        }
+        
+        .calendar-day.weekend {
+            background: #fef5e7;
+        }
+        
+        .calendar-day.other-month {
+            background: #f8fafc;
+            color: #cbd5e0;
+        }
+        
+        .day-number {
+            font-weight: 600;
+            margin-bottom: 6px;
+            font-size: 1em;
+            color: #2d3748;
+            text-align: center;
+            padding: 2px;
+            background: #f7fafc;
+            border-radius: 4px;
+        }
+        
+        .day-price {
+            font-size: 0.65em;
+            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+            padding: 4px 6px;
+            border-radius: 6px;
+            margin-bottom: 3px;
+            border-left: 3px solid #0ea5e9;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+        
+        .price-room-name {
+            font-weight: 600;
+            color: #1e40af;
+            margin-bottom: 2px;
+            font-size: 1.1em;
+        }
+        
+        .price-comparison {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2px;
+        }
+        
+        .price-original {
+            text-decoration: line-through;
+            color: #9ca3af;
+            font-size: 0.85em;
+        }
+        
+        .price-discount-rate {
+            background: linear-gradient(135deg, #fecaca 0%, #f87171 100%);
+            color: #7f1d1d;
+            padding: 1px 4px;
+            border-radius: 3px;
+            font-size: 0.75em;
+            font-weight: 600;
+        }
+        
+        .price-final {
+            color: #dc2626;
+            font-weight: 700;
+            font-size: 1em;
+            text-align: center;
+            background: rgba(220, 38, 38, 0.1);
+            padding: 2px 4px;
+            border-radius: 4px;
+            margin-top: 2px;
+        }
+        
+        .price-summary {
+            background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%);
+            color: #1e40af;
+            padding: 30px;
+            border-radius: 15px;
+            margin: 30px 0;
+            border: 1px solid #93c5fd;
+        }
+        
+        .booking-info {
+            background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+            border: 1px solid #bbf7d0;
+            padding: 25px;
+            border-radius: 15px;
+            margin-top: 20px;
+        }
+        
+        .info-title {
+            color: #166534;
+            margin-bottom: 15px;
+            font-size: 1.3em;
+            font-weight: 400;
+        }
+        
+        .info-list {
+            list-style: none;
+        }
+        
+        .info-list li {
+            margin: 8px 0;
+            padding-left: 20px;
+            position: relative;
+            font-weight: 300;
+        }
+        
+        .info-list li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #16a34a;
+            font-weight: 500;
+        }
+        
+        @media (max-width: 768px) {
+            .tabs {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .search-form {
+                flex-direction: column;
+            }
+            
+            .calendar-view {
+                font-size: 0.8em;
+            }
+            
+            .calendar-day {
+                min-height: 140px;
+                padding: 4px;
+            }
+            
+            .day-price {
+                font-size: 0.6em;
+                padding: 3px 4px;
+            }
+            
+            .price-room-name {
+                font-size: 1em;
+            }
+            
+            .price-final {
+                font-size: 0.9em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🏊‍♀️ 무주 풀빌라 별 공구 가격표</h1>
+            <div class="subtitle">(6월 11일 ~ 9월 30일)</div>
+            <div class="discount-info">
+                6월, 9월: 평일 40% 주말 20% 할인 ✨<br>
+                7월, 8월: 평일 30% 주말 10% 할인 🌿
+            </div>
+        </div>
+
+        <div class="tabs">
+            <button class="tab-button active" onclick="showTab('date-search')">🔍 날짜별 조회</button>
+            <button class="tab-button" onclick="showTab('month-calendar')">📅 월별 달력</button>
+        </div>
+
+        <!-- 날짜별 조회 탭 -->
+        <div id="date-search" class="tab-content active">
+            <div class="search-form">
+                <label for="searchDate">날짜 선택:</label>
+                <input type="date" id="searchDate" class="form-input" min="2025-06-11" max="2025-09-30">
+                <button class="btn btn-primary" onclick="searchByDate()">조회하기</button>
+            </div>
+            <div id="dateResult"></div>
+        </div>
+
+        <!-- 월별 달력 탭 -->
+        <div id="month-calendar" class="tab-content">
+            <div class="search-form">
+                <label for="monthSelect">월 선택:</label>
+                <select id="monthSelect" class="form-input">
+                    <option value="">전체 기간</option>
+                    <option value="6">2025년 6월</option>
+                    <option value="7">2025년 7월</option>
+                    <option value="8">2025년 8월</option>
+                    <option value="9">2025년 9월</option>
+                </select>
+                <button class="btn btn-primary" onclick="showCalendar()">달력 보기</button>
+            </div>
+            <div id="calendarResult"></div>
+        </div>
+
+        <div class="price-summary">
+            <h2 style="text-align: center; margin-bottom: 20px; font-weight: 400;">📍 예약 방법 안내</h2>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px;">
+                <div>
+                    <h3 style="margin-bottom: 10px;">예약 절차</h3>
+                    <ol style="padding-left: 20px;">
+                        <li>홈페이지 접속</li>
+                        <li>'실시간 예약' 클릭 
+                            <a href="http://xn--oi2b43hv7auz2c.com/reserve.html?link=reserve" 
+                               target="_blank" 
+                               style="display: inline-block; margin-left: 10px; padding: 5px 12px; background: linear-gradient(135deg, #60a5fa 0%, #3b82f6 100%); color: white; text-decoration: none; border-radius: 15px; font-size: 0.9em; font-weight: 500; box-shadow: 0 2px 8px rgba(59, 130, 246, 0.3); transition: transform 0.2s ease;"
+                               onmouseover="this.style.transform='translateY(-1px)'"
+                               onmouseout="this.style.transform='translateY(0)'">
+                                🔗 예약 바로가기
+                            </a>
+                        </li>
+                        <li>잔여 객실 선택 → 예약 진행</li>
+                        <li>결제는 무통장입금 선택</li>
+                        <li>정상가 ❌ → 할인가로 입금 ✅</li>
+                    </ol>
+                </div>
+                <div style="background: rgba(255,255,255,0.8); padding: 15px; border-radius: 10px;">
+                    <strong>💡 입금 예시</strong><br>
+                    정상가 400,000원 → 달력 240,000원 표시 시<br>
+                    👉 <span style="color: #dc2626; font-weight: 600;">240,000원 입금하면 예약 완료!</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="booking-info">
+            <h3 class="info-title">📝 주요 안내사항</h3>
+            <ul class="info-list">
+                <li>할인가 확인이 어려우면 전화 or 카톡으로 문의</li>
+                <li>기준 인원 미달 시 할인 적용 가능 (상담 후 입금)</li>
+                <li>3시간 내 미입금 시 자동 취소</li>
+                <li>👥 최대 5인까지 추가 요금 없음 (24개월 이하는 무료)</li>
+                <li>💳 인원 추가 요금은 현장 결제</li>
+                <li>🧾 현금영수증은 현장에서 요청 가능</li>
+                <li>📆 날짜 변경은 1회 가능, 취소/환불은 불가</li>
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        // 간단한 데이터 구조
+        const ROOM_DATA = {
+            '별1': { name: '별1', basePrice: 400000, features: '독채, 개별풀빌라' },
+            '별2': { name: '별2', basePrice: 500000, features: '독채, 개별풀빌라, 히노끼탕, 루프탑' },
+            '별3': { name: '별3', basePrice: 500000, features: '독채, 개별풀빌라, 히노끼탕, 루프탑' },
+            '별4': { name: '별4', basePrice: 500000, features: '독채, 개별풀빌라, 히노끼탕, 루프탑' },
+            '별5': { name: '별5', basePrice: 400000, features: '독채, 개별풀빌라' }
+        };
+
+        // 할인율 계산 함수
+        function getDiscountRate(date) {
+            const month = date.getMonth() + 1;
+            const dayOfWeek = date.getDay();
+            const isWeekend = dayOfWeek === 0 || dayOfWeek === 6;
+            
+            if (month === 6 || month === 9) {
+                return isWeekend ? 20 : 40;
+            } else if (month === 7 || month === 8) {
+                return isWeekend ? 10 : 30;
+            }
+            return 0;
+        }
+
+        // 날짜별 가격 계산
+        function calculatePrice(roomKey, date) {
+            const room = ROOM_DATA[roomKey];
+            const discountRate = getDiscountRate(date);
+            const discountPrice = room.basePrice * (100 - discountRate) / 100;
+            
+            return {
+                name: room.name,
+                features: room.features,
+                originalPrice: room.basePrice,
+                discountRate: discountRate,
+                finalPrice: discountPrice
+            };
+        }
+
+        // 탭 전환
+        function showTab(tabId) {
+            // 모든 탭 비활성화
+            document.querySelectorAll('.tab-content').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            document.querySelectorAll('.tab-button').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            
+            // 선택된 탭 활성화
+            document.getElementById(tabId).classList.add('active');
+            event.target.classList.add('active');
+        }
+
+        // 날짜별 조회
+        function searchByDate() {
+            const dateInput = document.getElementById('searchDate');
+            const resultDiv = document.getElementById('dateResult');
+            
+            if (!dateInput.value) {
+                alert('날짜를 선택해주세요.');
+                return;
+            }
+            
+            const selectedDate = new Date(dateInput.value);
+            const dayNames = ['일요일', '월요일', '화요일', '수요일', '목요일', '금요일', '토요일'];
+            const dayName = dayNames[selectedDate.getDay()];
+            
+            let html = '<h3 style="margin-bottom: 20px; color: #2d3748;">';
+            html += selectedDate.getFullYear() + '년 ' + (selectedDate.getMonth() + 1) + '월 ' + selectedDate.getDate() + '일 (' + dayName + ') 가격표</h3>';
+            html += '<div class="result-grid">';
+            
+            Object.keys(ROOM_DATA).forEach(roomKey => {
+                const price = calculatePrice(roomKey, selectedDate);
+                html += '<div class="room-card">';
+                html += '<div class="room-title">' + price.name + '</div>';
+                html += '<div class="room-features">' + price.features + '</div>';
+                html += '<div class="price-row">';
+                html += '<span class="original-price">' + price.originalPrice.toLocaleString() + '원</span>';
+                html += '<span class="discount-badge">' + price.discountRate + '%</span>';
+                html += '</div>';
+                html += '<div class="final-price">' + price.finalPrice.toLocaleString() + '원</div>';
+                html += '</div>';
+            });
+            
+            html += '</div>';
+            resultDiv.innerHTML = html;
+        }
+
+        // 달력 보기
+        function showCalendar() {
+            const monthSelect = document.getElementById('monthSelect');
+            const resultDiv = document.getElementById('calendarResult');
+            const selectedMonth = monthSelect.value;
+            
+            if (selectedMonth) {
+                generateMonthCalendar(parseInt(selectedMonth), resultDiv);
+            } else {
+                generateAllCalendars(resultDiv);
+            }
+        }
+
+        // 단일 월 달력 생성
+        function generateMonthCalendar(month, container) {
+            const year = 2025;
+            const monthNames = ['', '1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'];
+            const dayNames = ['일', '월', '화', '수', '목', '금', '토'];
+            
+            let html = '<h3 style="text-align: center; margin-bottom: 20px; color: #2d3748;">';
+            html += year + '년 ' + monthNames[month] + '</h3>';
+            html += '<div class="calendar-view">';
+            
+            // 요일 헤더
+            dayNames.forEach(day => {
+                html += '<div class="calendar-header">' + day + '</div>';
+            });
+            
+            // 달력 생성
+            const firstDay = new Date(year, month - 1, 1);
+            const lastDay = new Date(year, month, 0);
+            const startDay = firstDay.getDay();
+            
+            // 이전 달의 빈 칸
+            for (let i = 0; i < startDay; i++) {
+                html += '<div class="calendar-day other-month"></div>';
+            }
+            
+            // 현재 달의 날짜들
+            for (let day = 1; day <= lastDay.getDate(); day++) {
+                const currentDate = new Date(year, month - 1, day);
+                const dayOfWeek = currentDate.getDay();
+                const isWeekend = dayOfWeek === 0 || dayOfWeek === 6;
+                
+                // 6월 11일 이전이나 9월 30일 이후는 제외
+                const startDate = new Date(2025, 5, 11);
+                const endDate = new Date(2025, 8, 30);
+                
+                if (currentDate < startDate || currentDate > endDate) {
+                    html += '<div class="calendar-day other-month">';
+                    html += '<div class="day-number">' + day + '</div>';
+                    html += '</div>';
+                    continue;
+                }
+                
+                html += '<div class="calendar-day' + (isWeekend ? ' weekend' : '') + '">';
+                html += '<div class="day-number">' + day + '</div>';
+                
+                // 각 객실 가격 표시
+                Object.keys(ROOM_DATA).forEach(roomKey => {
+                    const price = calculatePrice(roomKey, currentDate);
+                    html += '<div class="day-price">';
+                    html += '<div class="price-room-name">' + price.name + '</div>';
+                    html += '<div class="price-comparison">';
+                    html += '<span class="price-original">' + price.originalPrice.toLocaleString() + '</span>';
+                    html += '<span class="price-discount-rate">-' + price.discountRate + '%</span>';
+                    html += '</div>';
+                    html += '<div class="price-final">' + price.finalPrice.toLocaleString() + '원</div>';
+                    html += '</div>';
+                });
+                
+                html += '</div>';
+            }
+            
+            html += '</div>';
+            container.innerHTML = html;
+        }
+
+        // 전체 달력 생성
+        function generateAllCalendars(container) {
+            let html = '';
+            for (let month = 6; month <= 9; month++) {
+                html += '<div style="margin-bottom: 40px;">';
+                const tempDiv = document.createElement('div');
+                generateMonthCalendar(month, tempDiv);
+                html += tempDiv.innerHTML;
+                html += '</div>';
+            }
+            container.innerHTML = html;
+        }
+
+        // 오늘 날짜로 초기화
+        document.addEventListener('DOMContentLoaded', function() {
+            const today = new Date();
+            const minDate = new Date(2025, 5, 11);
+            const maxDate = new Date(2025, 8, 30);
+            
+            if (today >= minDate && today <= maxDate) {
+                const dateStr = today.getFullYear() + '-' + 
+                             String(today.getMonth() + 1).padStart(2, '0') + '-' + 
+                             String(today.getDate()).padStart(2, '0');
+                document.getElementById('searchDate').value = dateStr;
+            } else {
+                document.getElementById('searchDate').value = '2025-06-11';
+            }
+        });
+    </script>
+</body>
+</html>
