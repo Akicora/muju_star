@@ -478,49 +478,52 @@
         </div>
         <div class="price-summary">
             <h2 style="text-align: center; margin-bottom: 20px; font-weight: 400;">예약 방법 안내</h2>
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px;">
-                <div>
-                    <h3 style="margin-bottom: 10px;">예약 절차</h3>
-                    <ol style="padding-left: 20px; line-height: 1.8;">
-                        <li>아래 버튼을 통해 전화 또는 카카오톡으로 문의해주세요</li>
-                        <li>운영자로부터 잔여 객실과 특가 금액을 안내받습니다</li>
-                        <li>안내받은 금액으로 <b>3시간 이내 입금</b> 시 예약 확정됩니다</li>
-                    </ol>
-                
-                    <div style="display: flex; gap: 10px; flex-wrap: wrap; margin-top: 15px;">
-                        <!-- 전화 버튼 -->
-                        <a href="tel:01081150114"
-                           style="display: inline-block; padding: 10px 18px; background: #3182ce; color: white; border-radius: 8px; text-decoration: none; font-size: 0.95em;">
-                           📞 전화 문의하기
-                        </a>
-                
-                        <!-- 카카오톡 버튼 -->
-                        <a href="https://open.kakao.com/o/sUCBL7Ah" target="_blank"
-                           style="display: inline-block; padding: 10px 18px; background: #FEE500; color: #3C1E1E; border-radius: 8px; text-decoration: none; font-size: 0.95em; font-weight: bold;">
-                           💬 카카오톡 문의하기
-                        </a>
-                    </div>
-                
-                    <!-- 요약 안내 문구 -->
-                    <div style="background: #f9fafb; border: 1px solid #e2e8f0; padding: 15px; margin-top: 20px; border-radius: 10px; font-size: 0.95em; line-height: 1.7;">
-                        💬 <strong>특가 예약 방법 요약</strong><br><br>
-                        1️⃣ 빈 방 확인<br>
-                        👉 실시간 예약 현황 확인 후<br>
-                        👉 무통장 예약 선택
-                        2️⃣ 가격 및 예약 문의<br>
-                        📞 010-8115-0114<br>
-                        💬 카카오톡 채널로도 문의 가능<br><br>
-                        3️⃣ 안내받은 금액으로 입금<br>
-                        (정상가가 아닌 안내받은 금액으로 입금)<br><br>
-                        4️⃣ <strong>입금 확인 후 예약 확정</strong>
-                    </div>
+        
+            <!-- 예약 절차 + 요약 안내 -->
+            <div style="background: white; padding: 20px; border-radius: 15px; border: 1px solid #e2e8f0;">
+                <h3 style="margin-bottom: 10px;">예약 절차</h3>
+                <ol style="padding-left: 20px; line-height: 1.8;">
+                    <li>아래 버튼을 통해 전화 또는 카카오톡으로 문의해주세요</li>
+                    <li>운영자로부터 잔여 객실과 특가 금액을 안내받습니다</li>
+                    <li>안내받은 금액으로 <b>3시간 이내 입금</b> 시 예약 확정됩니다</li>
+                </ol>
+        
+                <!-- 버튼 영역 -->
+                <div style="display: flex; gap: 10px; flex-wrap: wrap; margin-top: 15px;">
+                    <a href="tel:01081150114"
+                       style="display: inline-block; padding: 10px 18px; background: #3182ce; color: white; border-radius: 8px; text-decoration: none; font-size: 0.95em;">
+                       📞 전화 문의하기
+                    </a>
+                    <a href="https://open.kakao.com/o/sUCBL7Ah" target="_blank"
+                       style="display: inline-block; padding: 10px 18px; background: #FEE500; color: #3C1E1E; border-radius: 8px; text-decoration: none; font-size: 0.95em; font-weight: bold;">
+                       💬 카카오톡 문의하기
+                    </a>
                 </div>
-                <div style="background: rgba(255,255,255,0.8); padding: 15px; border-radius: 10px;">
-                    <strong>💸 입금 예시</strong><br>
-                    정상가가 <strong>₩400,000</strong>이고 📅 달력에<br>
-                     <strong>₩240,000</strong>으로 표시된 경우,<br>
-                    👉 <strong>₩240,000</strong>을 입금하시면 됩니다 ✅
+        
+                <!-- 특가 예약 요약 -->
+                <div style="background: #f9fafb; border: 1px solid #e2e8f0; padding: 15px; margin-top: 20px; border-radius: 10px; font-size: 0.95em; line-height: 1.7;">
+                    💬 <strong>특가 예약 방법 요약</strong><br><br>
+                    1️⃣ 빈 방 확인<br>
+                    👉 실시간 예약 현황 확인 후<br>
+                    👉 무통장 예약 선택<br><br>
+        
+                    2️⃣ 가격 및 예약 문의<br>
+                    📞 010-8115-0114<br>
+                    💬 카카오톡 채널로도 문의 가능<br><br>
+        
+                    3️⃣ 안내받은 금액으로 입금<br>
+                    (정상가가 아닌 안내받은 금액으로 입금)<br><br>
+        
+                    4️⃣ <strong>입금 확인 후 예약 확정</strong>
                 </div>
+            </div>
+        
+            <!-- 입금 예시 박스 (하단 이동) -->
+            <div style="background: rgba(255,255,255,0.8); padding: 15px; border-radius: 10px; margin-top: 20px; border: 1px solid #e2e8f0;">
+                <strong>💸 입금 예시</strong><br>
+                정상가가 <strong>₩400,000</strong>이고 📅 달력에<br>
+                <strong>₩240,000</strong>으로 표시된 경우,<br>
+                👉 <strong>₩240,000</strong>을 입금하시면 됩니다 ✅
             </div>
         </div>
 
@@ -548,7 +551,7 @@
                     <option value="7">2025년 7월</option>
                     <option value="8">2025년 8월</option>
                     <option value="9">2025년 9월</option>
-                    <option value="9">2025년 10월</option>
+                    <option value="10">2025년 10월</option>
                 </select>
                 <button class="btn btn-primary" onclick="showCalendar()">달력 보기</button>
             </div>
